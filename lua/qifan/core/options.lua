@@ -2,26 +2,6 @@ vim.cmd("let g:netrw_liststyle = 3")
 
 vim.g.have_nerd_font = false
 
-function GetOS()
-	-- ask LuaJIT first
-	if jit then
-		return jit.os
-	end
-
-	-- Unix, Linux variants
-	local fh, _ = assert(io.popen("uname -o 2>/dev/null", "r"))
-	if fh then
-		Osname = fh:read()
-	end
-
-	return Osname or "Windows"
-end
-
-if GetOS == "Windows" then
-	vim.o.shell = "powershell.exe"
-end
-vim.opt.shell = "powershell.exe"
-
 -- [options]
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -70,3 +50,24 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+function GetOS()
+	local osname
+
+	-- ask LuaJIT first
+	if jit then
+		return jit.os
+	end
+
+	-- Unix, Linux variants
+	local fh, err = assert(io.popen("uname -o 2>/dev/null", "r"))
+	if not err and fh then
+		osname = fh:read()
+	end
+
+	return osname or "Windows"
+end
+
+if GetOS() == "Windows" then
+	vim.o.shell = "powershell.exe"
+end
