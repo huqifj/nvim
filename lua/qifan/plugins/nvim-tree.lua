@@ -13,7 +13,14 @@ return {
 				number = true,
 				relativenumber = true,
 			},
-		})
+            actions = {
+                open_file = {
+                    window_picker = {
+                        enable = true,
+                    },
+                },
+            }
+        })
 
 		local keymap = vim.keymap -- for conciseness
 
