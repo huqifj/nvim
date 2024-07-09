@@ -25,7 +25,7 @@ vim.opt.softtabstop = 4
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
-vim.opt.whichwrap:append "<>[]hl"
+vim.opt.whichwrap:append("<>[]hl")
 
 vim.opt.undofile = true
 
@@ -62,10 +62,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
-local is_windows = vim.fn.has "win32" ~= 0
+local is_windows = vim.fn.has("win32") ~= 0
 if is_windows then
 	vim.o.shell = "powershell.exe"
 end
-
-
-
