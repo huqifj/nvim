@@ -5,7 +5,7 @@ local keymap = vim.keymap
 
 keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode whith jk" })
 
-keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+keymap.set("n", "<Esc>", "<cmd>noh<CR>")
 
 -- Diagnostic keymaps
 keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
