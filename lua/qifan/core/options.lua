@@ -5,6 +5,7 @@ vim.g.have_nerd_font = false
 -- [options]
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.numberwidth = 2
 
 vim.opt.hidden = true
 
@@ -17,9 +18,14 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.breakindent = true
 
 vim.opt.expandtab = true
-vim.opt.softtabstop = 4
-vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
+vim.opt.smartcase = true
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+
+-- go to previous/next line with h,l,left arrow and right arrow
+-- when cursor reaches end/beginning of line
+vim.opt.whichwrap:append "<>[]hl"
 
 vim.opt.undofile = true
 
@@ -29,6 +35,9 @@ vim.opt.smartcase = true
 vim.opt.wrap = false
 
 vim.opt.signcolumn = "yes"
+
+vim.o.timeout = true
+vim.o.timeoutlen = 300
 
 vim.opt.updatetime = 250
 
@@ -53,24 +62,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
-function GetOS()
-	local osname
-
-	-- ask LuaJIT first
-	if jit then
-		return jit.os
-	end
-
-	-- Unix, Linux variants
-	local fh, err = assert(io.popen("uname -o 2>/dev/null", "r"))
-	if not err and fh then
-		osname = fh:read()
-	end
-
-	return osname or "Windows"
-end
-
-if GetOS() == "Windows" then
+local is_windows = vim.fn.has "win32" ~= 0
+if is_windows then
 	vim.o.shell = "powershell.exe"
 end
 
