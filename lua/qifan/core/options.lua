@@ -6,6 +6,8 @@ vim.g.have_nerd_font = false
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+vim.opt.hidden = true
+
 vim.opt.mouse = "a"
 
 vim.opt.showmode = false
@@ -71,3 +73,6 @@ end
 if GetOS() == "Windows" then
 	vim.o.shell = "powershell.exe"
 end
+
+
+
