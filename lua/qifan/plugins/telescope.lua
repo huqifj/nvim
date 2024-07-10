@@ -26,7 +26,6 @@ return {
 
 		telescope.load_extension("fzf")
 		telescope.load_extension("live_grep_args")
-
 	end,
 
     -- stylua: ignore
@@ -45,6 +44,5 @@ return {
 		{ "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Find todos" },
 		{ "<leader>fu", "<cmd>Telescope git_status<CR>", desc = "telescope git status" },
 		{ "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", desc = "telescope find in current buffer" },
-    }
-,
+    },
 }
