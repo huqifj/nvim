@@ -1,5 +1,5 @@
-require('qifan/core')
-require('qifan/lazy')
+require('user/core')
+require('user/lazy')
 
 
 

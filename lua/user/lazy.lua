@@ -14,8 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	spec = {
-		{ import = "qifan.plugins" },
-		{ import = "qifan.plugins.lsp" },
+		{ import = "user.plugins" },
+		{ import = "user.plugins.lsp" },
 	},
 	change_detection = {
 		notify = false,
