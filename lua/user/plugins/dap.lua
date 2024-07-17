@@ -1,15 +1,19 @@
 return {
 	{
 		"mfussenegger/nvim-dap",
+		dependencies = {
+			"mfussenegger/nvim-dap-python",
+		},
 		event = "VeryLazy",
 		keys = {
-      -- add a keymap to browshttps://github.com/cmu-db/bustub.gite plhttps://github.com/cmu-db/bustub.gitugin files
-      -- stylua: ignore
-      {
-        "<f5>",
-        function() require("dap").continue() end,
-        desc = "launch/continue gdb",
-      },
+			-- add a keymap to browshttps://github.com/cmu-db/bustub.gite plhttps://github.com/cmu-db/bustub.gitugin files
+			{
+				"<f5>",
+				function()
+					require("dap").continue()
+				end,
+				desc = "launch/continue gdb",
+			},
 			{
 				"<f10>",
 				function()
@@ -42,6 +46,10 @@ return {
 		config = function()
 			local dap = require("dap")
 
+            require("dap-python").setup("C:/Users/chuan/AppData/Local/nvim/.virtualvenvs/debugpy/Scripts/python")
+            -- If using the above, then `/path/to/venv/bin/python -m debugpy --version`
+            -- must work in the shell
+
 			dap.adapters.gdb = {
 				type = "executable",
 				executable = {
@@ -59,23 +67,57 @@ return {
 				end,
 				cwd = "${workspaceFolder}",
 			}
-			dap.adapters.python = {
-				type = "executable",
-				-- command = os.getenv("HOME") .. "/.virtualenvs/tools/bin/python",
-				command = vim.fn.exepath("C:/Users/Qifan.Hu/AppData/Local/Programs/Python/Python312/python.exe"),
-				args = { "-m", "debugpy.adapter" },
-			}
-			dap.configurations.python = {
-				{
-					type = "python",
-					request = "launch",
-					name = "Launch file",
-					program = "${file}",
-					pythonPath = function()
-						return "C:/Users/Qifan.Hu/AppData/Local/Programs/Python/Python312"
-					end,
-				},
-			}
+			-- dap.adapters.python = function(cb, config)
+			-- 	if config.request == "attach" then
+			-- 		---@diagnostic disable-next-line: undefined-field
+			-- 		local port = (config.connect or config).port
+			-- 		---@diagnostic disable-next-line: undefined-field
+			-- 		local host = (config.connect or config).host or "127.0.0.1"
+			-- 		cb({
+			-- 			type = "server",
+			-- 			port = assert(port, "`connect.port` is required for a python `attach` configuration"),
+			-- 			host = host,
+			-- 			options = {
+			-- 				source_filetype = "python",
+			-- 			},
+			-- 		})
+			-- 	else
+			-- 		cb({
+			-- 			type = "executable",
+			-- 			command = ".virtualvenvs/debugpy/Scripts/python",
+			-- 			args = { "-m", "debugpy.adapter" },
+			-- 			options = {
+			-- 				source_filetype = "python",
+			-- 			},
+			-- 		})
+			-- 	end
+			-- end
+			-- dap.configurations.python = {
+			-- 	{
+			-- 		-- The first three options are required by nvim-dap
+			-- 		type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
+			-- 		request = "launch",
+			-- 		name = "Launch file",
+			--
+			-- 		-- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
+			--
+			-- 		program = "${file}", -- This configuration will launch the current file if used.
+			-- 		pythonPath = function()
+			-- 			-- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
+			-- 			-- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
+			-- 			-- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
+			-- 			local cwd = vim.fn.getcwd()
+			-- 			if vim.fn.executable(cwd .. ".virtualvenvs/debugpy/Scripts/python") == 1 then
+			--                          print(cwd .. ".virtualvenvs/debugpy/Scripts/python")
+			-- 				return cwd .. ".virtualvenvs/debugpy/Scripts/python"
+			-- 			elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
+			-- 				return cwd .. "/.venv/bin/python"
+			-- 			else
+			-- 				return "/usr/bin/python"
+			-- 			end
+			-- 		end,
+			-- 	},
+			-- }
 		end,
 	},
 	{
