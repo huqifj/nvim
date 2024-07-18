@@ -1,50 +1,18 @@
 return {
 	{
 		"mfussenegger/nvim-dap",
-		-- event = "VeryLazy",
+		event = "VeryLazy",
+        -- stylua: ignore
 		keys = {
-			{
-				"<f5>",
-				function()
-					require("dap").continue()
-				end,
-				desc = "launch/continue gdb",
-				-- :lua require'dap'.toggle_breakpoint()
-			},
-			{
-				"<f10>",
-				function()
-					require("dap").step_over()
-				end,
-				desc = "Step over",
-			},
-			{
-				"<C-f10>",
-				function()
-					require("dap").step_into()
-				end,
-				desc = "Steop into",
-			},
-			{
-				"<C-f>",
-				function()
-					require("dap").step_out()
-				end,
-				desc = "Step out",
-			},
-			{
-				"<C-f5>",
-				function()
-					require("dap").terminate()
-				end,
-				desc = "Terminate DAP",
-			},
+			{"<f5>",    function() require("dap").continue()          end, desc = "launch/continue gdb"},
+			{"<f6>",    function() require("dap").toggle_breakpoint() end, desc = "Toggle breakpoint"},
+			{"<f10>",   function() require("dap").step_over()         end, desc = "Step over"},
+			{"<C-f10>", function() require("dap").step_into()         end, desc = "Steop into"},
+			{"<C-f>",   function() require("dap").step_out()          end, desc = "Step out"},
+			{"<C-f5>",  function() require("dap").terminate()         end, desc = "Terminate DAP"},
 		},
 		config = function()
 			local dap = require("dap")
-
-			-- If using the above, then `/path/to/venv/bin/python -m debugpy --version`
-			-- must work in the shell
 
 			dap.adapters.gdb = {
 				type = "executable",
@@ -116,8 +84,7 @@ return {
 			"rcarriga/nvim-dap-ui",
 		},
 		config = function()
-			require("dap-python").setup("~/venv/bin/python")
-			-- require("dap-python").setup("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
+			require("dap-python").setup("C:/Users/Qifan.Hu/pythonvenv/venv/Scripts/pythonw.exe")
 		end,
 	},
 }
