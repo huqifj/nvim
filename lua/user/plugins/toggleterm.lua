@@ -1,6 +1,6 @@
 return {
 	"akinsho/toggleterm.nvim",
-	version = "v1.*",
+	version = "*",
 
 	config = function()
         local is_windows = vim.fn.has("win32") ~= 0
