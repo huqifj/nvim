@@ -34,25 +34,24 @@ return {
 			},
 		})
 
+        -- stylua: ignore
+		local keymap = vim.keymap
+		keymap.set("n", "<leader>fh", ":lua require('telescope.builtin').help_tags()<cr>",                {desc = "Find help tags" })
+		keymap.set("n", "<leader>fk", ":lua require('telescope.builtin').keymaps()<cr>",                  {desc = "Find keymaps" })
+		keymap.set("n", "<leader>fb", ":Telescope buffers<cr>",                                           {desc = "telescope find buffers"})
+		keymap.set("n", "<leader>fc", ":Telescope grep_string<cr>",                                       {desc = "Find string under cursor in cwd"})
+		keymap.set("n", "<leader>ff", ":Telescope find_files<cr>",                                        {desc = "Fuzzy find files in cwd"})
+		keymap.set("n", "<leader>fa", ":Telescope find_files follow=true no_ignore=true hidden=true<cr>", {desc = "telescope find all files"})
+		keymap.set("n", "<leader>fi", ":Telescope git_commits<cr>",                                       {desc = "telescope git commits"})
+		keymap.set("n", "<leader>fm", ":Telescope marks<cr>",                                             {desc = "telescope find marks"})
+		keymap.set("n", "<leader>fr", ":Telescope oldfiles<cr>",                                          {desc = "Fuzzy find recent files"})
+		keymap.set("n", "<leader>fs", ":Telescope live_grep<cr>",                                         {desc = "Find string in cwd"})
+		keymap.set("n", "<leader>ft", ":TodoTelescope<cr>",                                               {desc = "Find todos"})
+		keymap.set("n", "<leader>fu", ":Telescope git_status<cr>",                                        {desc = "telescope git status"})
+		keymap.set("n", "<leader>fz", ":Telescope current_buffer_fuzzy_find<cr>",                         {desc = "telescope find in current buffer"})
+		keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", {desc = "Live grep with args"})
+
 		telescope.load_extension("fzf")
 		telescope.load_extension("live_grep_args")
 	end,
-
-    -- stylua: ignore
-    keys = {
-		{ "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>", desc = "telescope find all files" },
-		{ "<leader>fb", "<cmd>Telescope buffers<CR>", desc = "telescope find buffers" },
-        { "<leader>fc", "<cmd>Telescope grep_string<cr>", desc = "Find string under cursor in cwd" },
-		{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Fuzzy find files in cwd" },
-        { "<leader>fg", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", desc = "Live grep with args" },
-	    { "<leader>fh", require("telescope.builtin").help_tags, desc = "Find help tegs" },
-		{ "<leader>fi", "<cmd>Telescope git_commits<CR>", desc = "telescope git commits" },
-	    { "<leader>fk", require("telescope.builtin").keymaps, desc = "Find keymaps" },
-		{ "<leader>fm", "<cmd>Telescope marks<CR>", desc = "telescope find marks" },
-		{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Fuzzy find recent files" },
-		{ "<leader>fs", "<cmd>Telescope live_grep<cr>", desc = "Find string in cwd" },
-		{ "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Find todos" },
-		{ "<leader>fu", "<cmd>Telescope git_status<CR>", desc = "telescope git status" },
-		{ "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", desc = "telescope find in current buffer" },
-    },
 }
