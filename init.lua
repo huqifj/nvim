@@ -1,5 +1,5 @@
-require('user/core')
--- require('user/lazy')
+require('core')
+-- require('lazy')
                                     
 
 -- The line beneath this is called `modeline`. See `:help modeline`
