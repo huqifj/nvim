@@ -1,5 +1,5 @@
-require('core')
--- require('lazy')
+require('qifan.core')
+require('qifan.lazy')
                                     
 
 -- The line beneath this is called `modeline`. See `:help modeline`
