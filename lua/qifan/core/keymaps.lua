@@ -10,11 +10,11 @@ keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window"
 keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
--- Window splitting management
-keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
-keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
-keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
-keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
+-- windows
+keymap.set("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
+keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
+keymap.set("n", "<leader>we", "<C-w>=", { desc = "Make splits equal size" })
+keymap.set("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 
 -- Resize window using <ctrl> arrow keys
 keymap.set("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
@@ -30,11 +30,56 @@ keymap.set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
 keymap.set("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
 keymap.set("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
 
--- Diagnostic keymaps
-keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
-keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+-- Add undo break-points
+keymap.set("i", ",", ",<c-g>u")
+keymap.set("i", ".", ".<c-g>u")
+keymap.set("i", ";", ";<c-g>u")
+
+-- save file
+keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+
+--keywordprg
+keymap.set("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
+
+-- better indenting，执行缩进后再次选中
+keymap.set("v", "<", "<gv")
+keymap.set("v", ">", ">gv")
+
+-- commenting
+keymap.set("n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" })
+keymap.set("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
+
+-- location list
+keymap.set("n", "<leader>xl", function()
+  local success, err = pcall(vim.fn.getloclist(0, { winid = 0 }).winid ~= 0 and vim.cmd.lclose or vim.cmd.lopen)
+  if not success and err then
+    vim.notify(err, vim.log.levels.ERROR)
+  end
+end, { desc = "Location List" })
+
+-- quickfix list
+keymap.set("n", "<leader>xq", function()
+  local success, err = pcall(vim.fn.getqflist({ winid = 0 }).winid ~= 0 and vim.cmd.cclose or vim.cmd.copen)
+  if not success and err then
+    vim.notify(err, vim.log.levels.ERROR)
+  end
+end, { desc = "Quickfix List" })
+
+-- diagnostic
+local diagnostic_goto = function(next, severity)
+  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+  severity = severity and vim.diagnostic.severity[severity] or nil
+  return function()
+    go({ severity = severity })
+  end
+end
+keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+keymap.set("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
+keymap.set("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
+keymap.set("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
+keymap.set("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
+keymap.set("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
+keymap.set("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 
 -- Exit terminal mode
 keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
