@@ -1,6 +1,6 @@
 require('qifan.core')
 require('qifan.lazy')
-                                    
+
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- 设置本文件缩进格式
