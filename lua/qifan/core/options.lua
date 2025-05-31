@@ -103,8 +103,8 @@ vim.opt.hidden = true
 
 
 vim.opt.expandtab = true
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4 -- Size of an indent
+vim.opt.tabstop = 4 -- Number of spaces tabs count for
 vim.opt.softtabstop = 4
 
 
