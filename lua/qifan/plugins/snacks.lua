@@ -43,4 +43,7 @@ return {
 		-- win ={enable = false},
 		-- zen ={enable = false},
 	},
+    keys = {
+        { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
+    }
 }
