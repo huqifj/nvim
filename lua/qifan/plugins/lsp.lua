@@ -3,8 +3,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
 
     config = function()
-        vim.lsp.enable('basedpyright')
+        -- vim.lsp.enable('basedpyright')
         vim.lsp.enable('lua_ls')
     end
-
 }
