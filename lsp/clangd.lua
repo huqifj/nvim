@@ -1,4 +1,4 @@
 return {
-	cmd = {"cland"},
+	cmd = {"clangd"},
 	filetypes = {"cpp","c"},
 }
