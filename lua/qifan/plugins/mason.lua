@@ -1,8 +1,5 @@
 return {
-
+	"mason-org/mason.nvim",
+	evenv = {"BufReadPost", "BufNewFile", "VimEnter"},
+	opts = {}
 }
-
--- return {
---     "mason-org/mason.nvim",
---     opts = {}
--- }

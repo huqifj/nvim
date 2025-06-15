@@ -1,5 +1,9 @@
 require('qifan.core')
+
+vim.lsp.enable 'lua_ls'
+
 require('qifan.lazy')
+
 
 
 -- The line beneath this is called `modeline`. See `:help modeline`
