@@ -15,14 +15,14 @@ return {
 			},
 
 			indent = {
-                enable = true,
+				enable = true,
 			},
 
 			ensure_installed = {
-                "lua",
-                "c",
-                "python",
-            },
+				"lua",
+				"c",
+				"python",
+			},
 
 			incremental_selection = {
 				enable = true,
