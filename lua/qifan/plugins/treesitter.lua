@@ -3,27 +3,15 @@ return {
 	branch = "master",
 	lazy = false,
 	build = ":TSUpdate",
-
 	config = function()
-		-- import nvim-treesitter plugin
-		local treesitter = require("nvim-treesitter.configs")
-
-		-- configure treesitter
-		treesitter.setup({ -- enable syntax highlighting
-			highlight = {
-				enable = true,
-			},
-
-			indent = {
-				enable = true,
-			},
-
+		require("nvim-treesitter.configs").setup({
 			ensure_installed = {
 				"lua",
 				"c",
 				"python",
 			},
-
+			highlight = { enable = true },
+			indent = { enable = true },
 			incremental_selection = {
 				enable = true,
 				keymaps = {
