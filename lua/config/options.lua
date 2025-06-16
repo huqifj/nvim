@@ -98,3 +98,7 @@ vim.opt.whichwrap:append("<>[]hl")
 vim.opt.wrap = false
 
 vim.opt.hlsearch = true
+
+vim.o.winborder = "rounded"
+
+vim.opt.completeopt:append("noselect")
