@@ -66,20 +66,13 @@ keymap.set("n", "<leader>xq", function()
 end, { desc = "Quickfix List" })
 
 -- diagnostic
-local diagnostic_goto = function(next, severity)
-	local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
-	severity = severity and vim.diagnostic.severity[severity] or nil
-	return function()
-		go({ severity = severity })
-	end
-end
 keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
-keymap.set("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
-keymap.set("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
-keymap.set("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
-keymap.set("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
-keymap.set("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
-keymap.set("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
+keymap.set("n", "]di", function() vim.diagnostic.jump( { count=1, float=true } ) end, { desc = "Next Diagnostic" })
+keymap.set("n", "[di", function() vim.diagnostic.jump( { count=-1, float=true } ) end, { desc = "Next Diagnostic" })
+keymap.set("n", "]w", function() vim.diagnostic.jump( { count=1, float=true, severity=vim.diagnostic.severity.WARN} ) end, { desc = "Next Error" })
+keymap.set("n", "[w", function() vim.diagnostic.jump( { count=-1, float=true, severity=vim.diagnostic.severity.WARN} ) end, { desc = "Next Error" })
+keymap.set("n", "]e", function() vim.diagnostic.jump( { count=1, float=true, severity=vim.diagnostic.severity.ERROR} ) end, { desc = "Next Error" })
+keymap.set("n", "[e", function() vim.diagnostic.jump( { count=-1, float=true, severity=vim.diagnostic.severity.ERROR} ) end, { desc = "Next Error" })
 
 -- Exit terminal mode
 keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
