@@ -99,10 +99,11 @@ return {
 			},
 		})
 
-		local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+		-- 暂时注释掉这段代码，因为会影响默认的 ;, 前后跳转功能
+		-- local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
 		-- Repeat movement with ; and ,
 		-- ensure ; goes forward and , goes backward regardless of the last direction
-		vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
-		vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
+		-- vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
+		-- vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
 	end,
 }
