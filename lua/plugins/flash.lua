@@ -4,11 +4,11 @@ return {
 	vscode = true,
 	---@type Flash.Config
 	opts = {
-		modes = {
-			char = {
-				enabled = false,
-			},
-		},
+		-- modes = {
+		-- 	char = {
+		-- 		enabled = false,
+		-- 	},
+		-- },
 	},
     -- stylua: ignore
     keys = {
