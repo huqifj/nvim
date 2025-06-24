@@ -25,7 +25,7 @@ return {
 		-- notifier = { enabled = true },
 		-- scroll = { enabled = true },
 		-- animate ={enabled = true},
-		-- bufdelete ={enabled = true},
+		bufdelete ={enabled = true},
 		-- debug ={enabled = true},
 		-- dim ={enabled = true},
 		-- git ={enabled = true},
