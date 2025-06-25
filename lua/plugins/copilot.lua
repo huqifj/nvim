@@ -5,6 +5,6 @@ return {
 	event = "BufReadPost",
 	opts = {
 		suggestion = { enabled = false },
-		panel = { enabled = false },
+		panel = { enabled = true },
 	},
 }

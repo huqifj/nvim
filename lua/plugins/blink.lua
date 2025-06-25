@@ -1,6 +1,9 @@
 return {
 	"saghen/blink.cmp",
-	dependencies = { "rafamadriz/friendly-snippets", "giuxtaposition/blink-cmp-copilot" },
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+		"fang2hou/blink-copilot",
+	},
 	version = "1.*",
 
 	---@module 'blink.cmp'
@@ -23,7 +26,7 @@ return {
 			providers = {
 				copilot = {
 					name = "copilot",
-					module = "blink-cmp-copilot",
+					module = "blink-copilot",
 					score_offset = 100,
 					async = true,
 				},
