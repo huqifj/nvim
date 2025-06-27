@@ -1,7 +1,5 @@
 local keymap = vim.keymap
 
-keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode whith jk" })
-
 keymap.set("n", "<Esc>", "<cmd>noh<CR>")
 
 --  Use CTRL+<hjkl> to switch between windows
