@@ -16,18 +16,30 @@ return {
 			nerd_font_variant = "mono",
 		},
 
-		-- (Default) Only show the documentation popup when manually triggered
-		completion = { documentation = { auto_show = false } },
+		completion = { documentation = { auto_show = true } },
 
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer", "copilot" },
 			providers = {
+				lsp = {
+					score_offset = 100,
+				},
+				path = {
+					score_offset = 50,
+				},
+				buffer = {
+					score_offset = 25,
+				},
+				snippets = {
+					score_offset = 10,
+					async = true,
+				},
 				copilot = {
 					name = "copilot",
 					module = "blink-copilot",
-					score_offset = 100,
+					score_offset = 0,
 					async = true,
 				},
 			},
