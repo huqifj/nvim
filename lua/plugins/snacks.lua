@@ -11,6 +11,7 @@ return {
 				{ section = "header" },
 				{ section = "keys", padding = 1 },
 				{ section = "recent_files", title = "Recent files", padding = 1 },
+				{ section = "projects", title = "Projects", padding = 1 },
 				{ section = "startup" },
 			},
 		},
