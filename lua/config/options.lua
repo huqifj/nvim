@@ -102,3 +102,10 @@ vim.opt.hlsearch = true
 vim.o.winborder = "rounded"
 
 vim.opt.completeopt:append("noselect")
+
+if vim.fn.has("win32") == 1 then
+  vim.o.shell = "powershell"
+else
+  vim.o.shell = "pwsh"
+end
+
