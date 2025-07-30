@@ -103,7 +103,7 @@ vim.o.winborder = "rounded"
 
 vim.opt.completeopt:append("noselect")
 
-if vim.fn.has("win32") == 1 then
-  vim.o.shell = "powershell"
+if(vim.loop.os_uname().sysname == "Windows_NT") then
+  vim.o.shell = vim.fn.executable "pwsh" == 1 and "pwsh" or "powershell"
 end
 
