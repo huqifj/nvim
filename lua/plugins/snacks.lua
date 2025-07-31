@@ -40,7 +40,7 @@ return {
 		-- profiler ={enabled = true},
 		-- rename ={enabled = true},
 		-- scratch ={enabled = true},
-		-- terminal ={enabled = true},
+		terminal = { enabled = true, win = { position = "float" } },
 		-- toggle ={enabled = true},
 		-- util ={enabled = true},
 		-- win ={enabled = true},
