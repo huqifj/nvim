@@ -13,13 +13,27 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 		end
 
-		map("gd", function() Snacks.picker.lsp_definitions() end, "Goto Definition" )
-		map("gD", function() Snacks.picker.lsp_declarations() end,  "Goto Declaration" )
-		map("gr", function() Snacks.picker.lsp_references() end, "References" )
-		map("gI", function() Snacks.picker.lsp_implementations() end,  "Goto Implementation" )
-		map("gy", function() Snacks.picker.lsp_type_definitions() end,  "Goto T[y]pe Definition" )
-		map("<leader>ss", function() Snacks.picker.lsp_symbols() end,  "LSP Symbols" )
-		map("<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end,  "LSP Workspace Symbols" )
+		map("gd", function()
+			Snacks.picker.lsp_definitions()
+		end, "Goto Definition")
+		map("gD", function()
+			Snacks.picker.lsp_declarations()
+		end, "Goto Declaration")
+		map("gr", function()
+			Snacks.picker.lsp_references()
+		end, "References")
+		map("gI", function()
+			Snacks.picker.lsp_implementations()
+		end, "Goto Implementation")
+		map("gy", function()
+			Snacks.picker.lsp_type_definitions()
+		end, "Goto T[y]pe Definition")
+		map("<leader>ss", function()
+			Snacks.picker.lsp_symbols()
+		end, "LSP Symbols")
+		map("<leader>sS", function()
+			Snacks.picker.lsp_workspace_symbols()
+		end, "LSP Workspace Symbols")
 
 		-- Rename the variable under your cursor.
 		--  Most Language Servers support renaming across files, etc.
@@ -30,16 +44,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("gra", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
 
 		-- Find references for the word under your cursor.
-		map("grr", function() Snacks.picker.lsp_references() end, "[G]oto [R]eferences")
+		map("grr", function()
+			Snacks.picker.lsp_references()
+		end, "[G]oto [R]eferences")
 
 		-- Jump to the implementation of the word under your cursor.
 		--  Useful when your language has ways of declaring types without an actual implementation.
-		map("gri", function() Snacks.picker.lsp_implementations() end, "[G]oto [I]mplementation")
+		map("gri", function()
+			Snacks.picker.lsp_implementations()
+		end, "[G]oto [I]mplementation")
 
 		-- Jump to the definition of the word under your cursor.
 		--  This is where a variable was first declared, or where a function is defined, etc.
 		--  To jump back, press <C-t>.
-		map("grd", function() Snacks.picker.lsp_definitions() end, "[G]oto [D]efinition")
+		map("grd", function()
+			Snacks.picker.lsp_definitions()
+		end, "[G]oto [D]efinition")
 
 		-- WARN: This is not Goto Definition, this is Goto Declaration.
 		--  For example, in C this would take you to the header.
@@ -47,19 +67,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		-- Fuzzy find all the symbols in your current document.
 		--  Symbols are things like variables, functions, types, etc.
-		map("gO", function() Snacks.picker.lsp_symbols() end, "Open Document Symbols")
+		map("gO", function()
+			Snacks.picker.lsp_symbols()
+		end, "Open Document Symbols")
 
 		-- Fuzzy find all the symbols in your current workspace.
 		--  Similar to document symbols, except searches over your entire project.
-		map("gW", function() Snacks.picker.lsp_workspace_symbols() end, "Open Workspace Symbols")
+		map("gW", function()
+			Snacks.picker.lsp_workspace_symbols()
+		end, "Open Workspace Symbols")
 
 		-- Jump to the type of the word under your cursor.
 		--  Useful when you're not sure what type a variable is and you want to see
 		--  the definition of its *type*, not where it was *defined*.
-		map("grt", function() Snacks.picker.lsp_type_definitions() end, "[G]oto [T]ype Definition")
+		map("grt", function()
+			Snacks.picker.lsp_type_definitions()
+		end, "[G]oto [T]ype Definition")
 
 		map("<A-o>", "<cmd>LspClangdSwitchSourceHeader<cr>", "Switch source header")
-
 
 		-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
 		---@param client vim.lsp.Client
