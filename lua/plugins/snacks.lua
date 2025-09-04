@@ -54,6 +54,11 @@ return {
 
 	-- stylua: ignore
 	keys = {
+		-- Top Pickers & Explorer
+		{ "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
+		{ "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
+		{ "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
+
 		-- find
 		{ "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
 		{ "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
@@ -69,9 +74,6 @@ return {
 		{ "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
 		{ "<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages" },
 		{ "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
-
-		-- Top Pickers & Explorer
-		{ "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
 
 		-- Other
 		{ "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },

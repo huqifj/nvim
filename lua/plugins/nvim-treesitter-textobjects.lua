@@ -45,8 +45,6 @@ return {
 					-- and should return true or false
 					include_surrounding_whitespace = true,
 				},
-			},
-			textobjects = {
 				swap = {
 					enable = true,
 					swap_next = {
@@ -56,8 +54,6 @@ return {
 						["<leader>A"] = "@parameter.inner",
 					},
 				},
-			},
-			textobjects = {
 				move = {
 					enable = true,
 					set_jumps = true, -- whether to set jumps in the jumplist
