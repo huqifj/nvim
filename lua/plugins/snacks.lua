@@ -72,6 +72,8 @@ return {
 		{ "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
 		{ "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
 		{ "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
+
+		-- Search
 		{ "<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages" },
 		{ "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
 
